@@ -1,9 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
+import { ApiService } from '../services/api.service';
+import { Task } from '../models/task.model';
 
 @Component({
+  standalone: true,
   selector: 'app-tasks',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './tasks.html',
-  styleUrl: './tasks.scss',
+  styleUrls: ['./tasks.scss'],
 })
-export class Tasks {}
+export class Tasks implements OnInit {
+  tasks$!: Observable<Task[]>;
+
+  constructor(private api: ApiService) {}
+
+  ngOnInit(): void {
+    this.tasks$ = this.api.getTasks();
+  }
+}
