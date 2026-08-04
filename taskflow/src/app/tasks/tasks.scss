@@ -1,0 +1,32 @@
+.loading, .error {
+  padding: 16px;
+  color: var(--text-secondary, #666);
+}
+.error { color: #d64545; }
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #e5e5ec;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.status-badge {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: capitalize;
+
+  &.todo        { background: #f0f0f5; color: #666; }
+  &.in-progress { background: #fff4e0; color: #b8770a; }
+  &.done        { background: #e5f7ee; color: #1a9f5c; }
+}
