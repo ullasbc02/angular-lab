@@ -30,3 +30,17 @@
   &.in-progress { background: #fff4e0; color: #b8770a; }
   &.done        { background: #e5f7ee; color: #1a9f5c; }
 }
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e5e5ec;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 14px;
+
+  &:focus {
+    outline: none;
+    border-color: #6c63ff;
+  }
+}

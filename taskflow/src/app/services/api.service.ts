@@ -41,4 +41,9 @@ export class ApiService {
   getProject(id: number): Observable<Project> {
     return this.http.get<Project>(`${this.baseUrl}/projects/${id}`);
   }
+
+  searchTasks(term: string): Observable<Task[]> {
+    const query = term ? `?q=${term}` : '';
+    return this.http.get<Task[]>(`${this.baseUrl}/tasks${query}`);
+  }
 }
