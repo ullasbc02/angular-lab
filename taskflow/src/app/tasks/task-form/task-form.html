@@ -1,0 +1,37 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="task-form">
+  <h3>{{ task ? 'Edit Task' : 'New Task' }}</h3>
+
+  <label>
+    Title
+    <input formControlName="title" placeholder="Task title">
+    <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="field-error">
+      Title is required, minimum 3 characters.
+    </div>
+  </label>
+
+  <label>
+    Status
+    <select formControlName="status">
+      <option value="todo">Todo</option>
+      <option value="in-progress">In Progress</option>
+      <option value="done">Done</option>
+    </select>
+  </label>
+
+  <label>
+    Project ID
+    <input formControlName="projectId" type="number" placeholder="Project ID">
+    <div *ngIf="taskForm.get('projectId')?.invalid && taskForm.get('projectId')?.touched" class="field-error">
+      Project is required.
+    </div>
+  </label>
+
+  <div class="form-actions">
+    <button type="button" (click)="onCancel()">Cancel</button>
+    <button type="submit" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Saving...' : 'Save' }}
+    </button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</form>

@@ -1,14 +1,52 @@
 {
   "users": [
-    { "id": 1, "email": "vijay@test.com", "password": "password123", "name": "Vijay" }
+    {
+      "id": 1,
+      "email": "vijay@test.com",
+      "password": "password123",
+      "name": "Vijay"
+    }
   ],
   "tasks": [
-    { "id": 1, "title": "Set up project skeleton", "status": "done", "projectId": 1 },
-    { "id": 2, "title": "Build auth flow", "status": "in-progress", "projectId": 1 },
-    { "id": 3, "title": "Design task list UI", "status": "todo", "projectId": 2 }
+    {
+      "id": 1,
+      "title": "Set up project skeleton",
+      "status": "done",
+      "projectId": 1
+    },
+    {
+      "id": 2,
+      "title": "Build auth flow",
+      "status": "in-progress",
+      "projectId": 1
+    },
+    {
+      "title": "Design task list UI",
+      "status": "in-progress",
+      "projectId": 2,
+      "id": 3
+    },
+    {
+      "title": "Ullas",
+      "status": "todo",
+      "projectId": 2,
+      "id": 4
+    },
+    {
+      "title": "Ullas",
+      "status": "todo",
+      "projectId": 2,
+      "id": 5
+    }
   ],
   "projects": [
-    { "id": 1, "name": "TaskFlow Core" },
-    { "id": 2, "name": "Marketing Site" }
+    {
+      "id": 1,
+      "name": "TaskFlow Core"
+    },
+    {
+      "id": 2,
+      "name": "Marketing Site"
+    }
   ]
 }
