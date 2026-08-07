@@ -22,10 +22,10 @@
     </li>
   </ul>
 
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="error$ | async as errorMessage" class="error">{{ errorMessage }}</div>
 </ng-container>
 
 <ng-template #loadingBlock>
   <div class="loading">Loading tasks...</div>
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="error$ | async as errorMessage" class="error">{{ errorMessage }}</div>
 </ng-template>
