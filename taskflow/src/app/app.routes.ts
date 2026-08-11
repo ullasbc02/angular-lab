@@ -5,7 +5,6 @@ import { Dashboard } from './dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
 import { Layout } from './layout/layout';
 import { Tasks } from './tasks/tasks';
-import { Projects } from './projects/projects';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,11 +12,27 @@ export const routes: Routes = [
   {
     path: '',
     component: Layout,
-    canActivate: [authGuard],       // guard once, protects everything nested inside
+    canActivate: [authGuard],
     children: [
       { path: 'dashboard', component: Dashboard },
       { path: 'tasks', component: Tasks },
-      { path: 'projects', component: Projects },
+      {
+        path: 'projects',
+        loadComponent: () => import('./projects/projects').then((m) => m.Projects),
+        children: [
+          { path: '', loadComponent: () => import('./projects/project-list/project-list').then((m) => m.ProjectList) },
+          {
+            path: ':id',
+            loadComponent: () => import('./projects/project-detail/project-detail').then((m) => m.ProjectDetail),
+            children: [
+              {
+                path: 'tasks',
+                loadComponent: () => import('./projects/project-tasks/project-tasks').then((m) => m.ProjectTasks)
+              }
+            ]
+          }
+        ]
+      }
     ]
   }
 ];

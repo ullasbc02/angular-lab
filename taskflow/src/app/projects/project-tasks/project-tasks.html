@@ -1,1 +1,6 @@
-<p>project-tasks works!</p>
+<!-- project-tasks.component.html -->
+<ul>
+  <li *ngFor="let task of tasks$ | async">
+    {{ task.title }} — {{ task.status }}
+  </li>
+</ul>

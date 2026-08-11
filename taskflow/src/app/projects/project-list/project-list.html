@@ -1,1 +1,8 @@
-<p>project-list works!</p>
+<!-- project-list.component.html -->
+<h2>Projects</h2>
+<div class="project-grid">
+  <a *ngFor="let p of projects$ | async; trackBy: trackById"
+     [routerLink]="[p.id]" class="project-card">
+    {{ p.name }}
+  </a>
+</div>

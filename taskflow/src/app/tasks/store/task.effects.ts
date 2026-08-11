@@ -6,39 +6,43 @@ import { TaskActions } from './task.actions';
 
 @Injectable()
 export class TaskEffects {
-  loadTasks$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.loadTasks),
-      switchMap(({ term }) =>
-        this.api.searchTasks(term).pipe(
-          map(tasks => TaskActions.loadTasksSuccess({ tasks })),
-          catchError(error => of(TaskActions.loadTasksFailure({ error: error.message })))
+  loadTasks$;
+  createTask$;
+  updateTask$;
+
+  constructor(private actions$: Actions, private api: ApiService) {
+    this.loadTasks$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(TaskActions.loadTasks),
+        switchMap(({ term }) =>
+          this.api.searchTasks(term).pipe(
+            map(tasks => TaskActions.loadTasksSuccess({ tasks })),
+            catchError(error => of(TaskActions.loadTasksFailure({ error: error.message })))
+          )
         )
       )
-    )
-  );
+    );
 
-  createTask$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.createTask),
-      switchMap(({ task }) =>
-        this.api.createTask(task).pipe(
-          map(created => TaskActions.createTaskSuccess({ task: created }))
+    this.createTask$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(TaskActions.createTask),
+        switchMap(({ task }) =>
+          this.api.createTask(task).pipe(
+            map(created => TaskActions.createTaskSuccess({ task: created }))
+          )
         )
       )
-    )
-  );
+    );
 
-  updateTask$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(TaskActions.updateTask),
-      switchMap(({ id, task }) =>
-        this.api.updateTask(id, task).pipe(
-          map(updated => TaskActions.updateTaskSuccess({ task: updated }))
+    this.updateTask$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(TaskActions.updateTask),
+        switchMap(({ id, task }) =>
+          this.api.updateTask(id, task).pipe(
+            map(updated => TaskActions.updateTaskSuccess({ task: updated }))
+          )
         )
       )
-    )
-  );
-
-  constructor(private actions$: Actions, private api: ApiService) {}
+    );
+  }
 }

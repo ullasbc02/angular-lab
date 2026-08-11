@@ -1,9 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { Observable, switchMap } from 'rxjs';
+import { ApiService } from '../../services/api.service';
+import { Project } from '../../models/project.model';
 
 @Component({
   selector: 'app-project-detail',
-  imports: [],
-  templateUrl: './project-detail.html',
-  styleUrl: './project-detail.scss',
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterOutlet],
+  templateUrl: './project-detail.html'
 })
-export class ProjectDetail {}
+export class ProjectDetail implements OnInit {
+  project$!: Observable<Project>;
+  constructor(private route: ActivatedRoute, private api: ApiService) {}
+
+  ngOnInit(): void {
+    this.project$ = this.route.paramMap.pipe(
+      switchMap(params => this.api.getProject(Number(params.get('id'))))
+    );
+  }
+}
