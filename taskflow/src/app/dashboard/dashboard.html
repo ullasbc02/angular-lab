@@ -1,2 +1,16 @@
+<!-- dashboard.component.html -->
 <h2>Dashboard</h2>
-<p>You're logged in.</p>
+<div class="stat-grid">
+  <div class="stat-card">
+    <span class="stat-number">{{ todoCount$ | async }}</span>
+    <span class="stat-label">Todo</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">{{ inProgressCount$ | async }}</span>
+    <span class="stat-label">In Progress</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-number">{{ doneCount$ | async }}</span>
+    <span class="stat-label">Done</span>
+  </div>
+</div>

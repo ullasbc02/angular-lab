@@ -9,7 +9,8 @@ import { Project } from '../../models/project.model';
   selector: 'app-project-detail',
   standalone: true,
   imports: [CommonModule, RouterLink, RouterOutlet],
-  templateUrl: './project-detail.html'
+  templateUrl: './project-detail.html',
+  styleUrls: ['./project-detail.scss']
 })
 export class ProjectDetail implements OnInit {
   project$!: Observable<Project>;

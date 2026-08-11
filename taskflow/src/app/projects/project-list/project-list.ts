@@ -9,7 +9,8 @@ import { Project } from '../../models/project.model';
   selector: 'app-project-list',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './project-list.html'
+  templateUrl: './project-list.html',
+  styleUrls: ['./project-list.scss'],
 })
 export class ProjectList implements OnInit {
   projects$!: Observable<Project[]>;

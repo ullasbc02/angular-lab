@@ -1,6 +1,13 @@
 <!-- project-detail.component.html -->
-<div *ngIf="project$ | async as project">
-  <h2>{{ project.name }}</h2>
-  <nav><a routerLink="tasks">Tasks</a></nav>
-  <router-outlet></router-outlet>
+<div *ngIf="project$ | async as project" class="project-detail">
+  <div class="project-header">
+    <h2 class="project-title">{{ project.name }}</h2>
+    <nav class="project-nav">
+      <a class="project-nav-link" routerLink="tasks">Tasks</a>
+    </nav>
+  </div>
+
+  <div class="project-content">
+    <router-outlet></router-outlet>
+  </div>
 </div>

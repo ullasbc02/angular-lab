@@ -9,7 +9,8 @@ import { Task } from '../../models/task.model';
   selector: 'app-project-tasks',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './project-tasks.html'
+  templateUrl: './project-tasks.html',
+  styleUrls: ['./project-tasks.scss']
 })
 export class ProjectTasks implements OnInit {
   tasks$!: Observable<Task[]>;

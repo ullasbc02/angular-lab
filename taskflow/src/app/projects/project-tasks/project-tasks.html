@@ -1,6 +1,7 @@
 <!-- project-tasks.component.html -->
-<ul>
-  <li *ngFor="let task of tasks$ | async">
-    {{ task.title }} — {{ task.status }}
+<ul class="project-tasks">
+  <li *ngFor="let task of tasks$ | async" class="project-task-item">
+    <span>{{ task.title }}</span>
+    <span class="project-task-status">{{ task.status }}</span>
   </li>
 </ul>

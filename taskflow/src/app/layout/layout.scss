@@ -49,10 +49,9 @@
     &:hover { background: rgba(255,255,255,0.05); }
   }
 }
-
 .content {
   flex: 1;
   overflow-y: auto;
-  padding: 32px;
-  background: #f7f7fb;
+  padding: 32px 40px;
+  background: var(--color-bg);
 }

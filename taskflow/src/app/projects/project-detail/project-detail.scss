@@ -1,0 +1,44 @@
+.project-detail {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.project-title {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.project-nav {
+  display: flex;
+  gap: 12px;
+}
+
+.project-nav-link {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--color-text);
+  background: transparent;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: var(--color-accent);
+  }
+}
+
+.project-content {
+  margin-top: 12px;
+}
