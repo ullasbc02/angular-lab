@@ -1,22 +1,44 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { describe, it, expect, beforeEach } from 'vitest';
 
 import { TaskForm } from './task-form';
 
 describe('TaskForm', () => {
-  let component: TaskForm;
-  let fixture: ComponentFixture<TaskForm>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [TaskForm],
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(TaskForm);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, HttpClientTestingModule, TaskForm]
+    });
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should be invalid when title is empty', () => {
+    const fixture = TestBed.createComponent(TaskForm);
+    const component = fixture.componentInstance;
+
+    fixture.detectChanges();
+
+    component.taskForm.patchValue({
+      title: '',
+      status: 'todo',
+      projectId: 1
+    });
+
+    expect(component.taskForm.invalid).toBe(true);
+  });
+
+  it('should be valid with a proper title', () => {
+    const fixture = TestBed.createComponent(TaskForm);
+    const component = fixture.componentInstance;
+
+    fixture.detectChanges();
+
+    component.taskForm.patchValue({
+      title: 'Valid title',
+      status: 'todo',
+      projectId: 1
+    });
+
+    expect(component.taskForm.valid).toBe(true);
   });
 });

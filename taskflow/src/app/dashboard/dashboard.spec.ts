@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { provideStore } from '@ngrx/store';
 import { Dashboard } from './dashboard';
+import { taskReducer } from '../tasks/store/task.reducer';
 
 describe('Dashboard', () => {
   let component: Dashboard;
@@ -9,6 +10,7 @@ describe('Dashboard', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Dashboard],
+      providers: [provideStore({ tasks: taskReducer })],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Dashboard);
