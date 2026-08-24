@@ -1,7 +1,7 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Header } from './header/header';
 import { User } from "./user/user";
-import { DUMMY_USERS } from './dummy-users';
+import { UserService } from './user/user.service';
 import { Tasks } from "./tasks/tasks";
 
 @Component({
@@ -11,14 +11,19 @@ import { Tasks } from "./tasks/tasks";
   styleUrls: ['./app.css']
 })
 export class App {
-  
-
-  users = DUMMY_USERS;
   selectedUserId?: string;
 
-  get selectedUser() {
-    return this.users.find(user => user.id === this.selectedUserId)!;
+  get users() {
+    return this.userService.getUsers();
   }
+
+  get selectedUser() {
+    return this.selectedUserId
+      ? this.userService.getUserById(this.selectedUserId)
+      : undefined;
+  }
+
+  constructor(private userService: UserService) {}
 
   onSelectUser($event: string) {
     console.log('User selected with ID:', $event);
