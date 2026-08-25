@@ -1,10 +1,5 @@
-<article>
-  <header>
-    <app-dashboard-item
-      [image]="{ src: 'status.png', alt: 'A signal symbol' }"
-      [title]="'Server Status'"
-    ></app-dashboard-item>
-  </header>
+
+  
   <div>
     @if (currentStatus === "online") {
       <p>Servers are online</p>
@@ -17,4 +12,4 @@
       <p>Fetching server status failed.</p>
     }
   </div>
-</article>
+

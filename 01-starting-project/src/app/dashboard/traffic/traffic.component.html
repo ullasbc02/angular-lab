@@ -1,17 +1,11 @@
-<article>
-  <header>
-    <app-dashboard-item
-      [image]="{ src: 'globe.png', alt: 'A globe' }"
-      [title]="'Traffic'"
-    ></app-dashboard-item>
-  </header>
-  <div id="traffic">
-    <p>Last 7 days</p>
 
-    <div id="chart">
-      @for (dataPoint of dummyTrafficData; track dataPoint.id) {
-        <div [style.height]="(dataPoint.value / maxTraffic) * 100 + '%'"></div>
-      }
-    </div>
+
+<div id="traffic">
+  <p>Last 7 days</p>
+
+  <div id="chart">
+    @for (dataPoint of dummyTrafficData; track dataPoint.id) {
+      <div [style.height]="(dataPoint.value / maxTraffic) * 100 + '%'"></div>
+    }
   </div>
-</article>
+</div>
